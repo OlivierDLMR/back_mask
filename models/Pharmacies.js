@@ -14,6 +14,6 @@ const PharmaciesSchema = new Schema({
             required: true
         }
     },
-    mask: { type: Int32, required: true },
+    mask: { type: Number, required: false },
 });
 module.exports = mongoose.model('Pharmacies', PharmaciesSchema);
