@@ -1,29 +1,22 @@
 var express = require('express');
 var router = express.Router();
-var Pharmacie = require('../models/Pharmacies');
-
+var Pharmacies = require('../models/Pharmacies');
 
 router.get('/pharmacies', (req, res) => {
-    Pharmacie.find().sort({ createdAt: -1 }).exec((err, pharmacies) => {
-        res.json(pharmacies);
+    Pharmacies.find().sort({ createdAt: -1 }).exec((err, pharmacie) => {
+        res.json(pharmacie);
     });
 });
 
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+    res.render('index', { title: 'I need a mask' });
 });
 
+
 router.post('/pharmacies', (req, res) => {
-
-} );
-
-
-
-
-router.post('/pharmacie', (req, res) => {
-    const pharmacies = new Pharmacies({
+    const Pharmacies = new Pharmacies({
         name: req.body.name,
         geometry: {
             type: 'Point',
@@ -34,14 +27,16 @@ router.post('/pharmacie', (req, res) => {
         },
         address: req.body.address
     });
-    Pharmacies.register(Pharmacie, (err, pharmacie) => {
+
+    Pharmacies.register(Pharmacies, (err, pharmacies) => {
         if (err) {
             console.log(err);
-            return res.json(pharmacie);
+            return res.json(pharmacies);
         }
 
         res.redirect('/');
     });
 });
 
+module.exports = router;
 
