@@ -18,5 +18,8 @@
     "node-sass-middleware": "0.11.0",
     "nodemon": "^2.0.2",
     "pug": "2.0.0-beta11"
+  },
+  "devDependencies": {
+    "express-session": "^1.17.0"
   }
 }

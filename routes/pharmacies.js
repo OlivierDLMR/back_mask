@@ -12,12 +12,12 @@ router.get('/', function(req, res, next) {
 router.post('/', (req, res) => {
     const pharmacie = new Pharmacie({
         name: req.body.name,
-        address: req.body.address,
+        adresse: req.body.adresse,
         geometry: {
             type: 'Point',
             coordinates: [req.body.longitude, req.body.latitude]
         },
-        mask: req.body.mask
+        masque: req.body.masque
     });
     pharmacie.save((err, newPharmacie) => {
         if (err) return res.json(err);
