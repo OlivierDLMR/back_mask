@@ -17,9 +17,10 @@ router.post('/', (req, res) => {
             type: 'Point',
             coordinates: [req.body.longitude, req.body.latitude]
         },
-        masque: req.body.masque
+        masques: req.body.masques
     });
     pharmacie.save((err, newPharmacie) => {
+        console.log(err);
         if (err) return res.json(err);
         res.json(newPharmacie);
     });
